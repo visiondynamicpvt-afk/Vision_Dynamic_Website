@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Globe,
@@ -63,25 +62,44 @@ const services = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.6,
+      ease: [0.4, 0, 0.2, 1] as const,
+    },
+  }),
+};
+
 const Services = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section id="services" className="py-24 bg-card/30">
-      <div className="section-container" ref={ref}>
+    <section id="services" className="py-28 bg-card/20 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      </div>
+
+      <div className="section-container relative z-10" ref={ref}>
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-primary font-medium mb-4 tracking-wider uppercase"
+            className="text-primary font-semibold mb-4 tracking-widest uppercase text-sm"
           >
             Our Services
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="section-title"
@@ -93,7 +111,7 @@ const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="section-subtitle mx-auto mt-4"
+            className="section-subtitle mx-auto mt-6"
           >
             We offer comprehensive IT services tailored to help your business
             grow and stay ahead in the digital landscape.
@@ -105,18 +123,23 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="service-card bg-card p-6 rounded-2xl border border-border group cursor-pointer"
+              custom={index}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              variants={cardVariants}
+              whileHover={{ y: -12, scale: 1.02 }}
+              className="service-card bg-card/80 backdrop-blur-sm p-8 rounded-2xl border border-border group cursor-pointer"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300 group-hover:bg-primary group-hover:scale-110">
-                <service.icon className="h-7 w-7 text-primary transition-colors group-hover:text-primary-foreground" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-3 font-display">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-primary"
+              >
+                <service.icon className="h-8 w-8 text-primary transition-colors group-hover:text-primary-foreground" />
+              </motion.div>
+              <h3 className="text-xl font-semibold text-foreground mb-3 font-display">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 {service.description}
               </p>
             </motion.div>

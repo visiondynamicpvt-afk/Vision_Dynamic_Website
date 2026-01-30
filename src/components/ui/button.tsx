@@ -15,10 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Vision Dynamic custom variants
-        hero: "bg-gradient-to-r from-primary to-purple-500 text-primary-foreground font-semibold hover:shadow-xl hover:shadow-primary/30 hover:scale-105",
-        heroOutline: "border-2 border-primary/70 bg-transparent text-foreground hover:bg-primary/10 hover:border-primary",
-        glow: "bg-primary text-primary-foreground animate-pulse-glow hover:scale-105",
+        // Vision Dynamic custom variants - Blue theme
+        hero: "bg-gradient-to-r from-primary to-sky-400 text-primary-foreground font-semibold hover:shadow-xl hover:shadow-primary/40 hover:scale-105",
+        heroOutline: "border-2 border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 hover:border-foreground/50",
+        glow: "bg-primary text-primary-foreground glow-pulse hover:scale-105",
       },
       size: {
         default: "h-10 px-4 py-2",

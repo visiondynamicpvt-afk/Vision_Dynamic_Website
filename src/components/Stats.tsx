@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Users, FolderKanban, Star, Award } from "lucide-react";
 
@@ -77,22 +76,47 @@ const Counter = ({
 const Stats = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   return (
-    <section className="py-20 bg-card/50">
-      <div className="section-container" ref={ref}>
+    <section className="py-24 bg-card/30 relative overflow-hidden">
+      {/* Background decoration */}
+      <motion.div
+        style={{ y }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      </motion.div>
+
+      <div className="section-container relative z-10" ref={ref}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center p-6"
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.15,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="text-center p-8 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/30 transition-colors"
             >
-              <div className="inline-flex p-4 rounded-2xl bg-primary/10 mb-4">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={inView ? { scale: 1 } : {}}
+                transition={{ delay: index * 0.15 + 0.2, type: "spring" }}
+                className="inline-flex p-4 rounded-2xl bg-primary/10 mb-6"
+              >
                 <stat.icon className="h-8 w-8 text-primary" />
-              </div>
+              </motion.div>
               <div className="mb-2">
                 <Counter value={stat.value} suffix={stat.suffix} inView={inView} />
               </div>
