@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -9,44 +8,78 @@ const CTA = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-28 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-purple-600/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-sky-500/5" />
       
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
+      {/* Animated decorative elements */}
+      <motion.div
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3]
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
+        className="absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{ 
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.4, 0.2]
+        }}
+        transition={{ duration: 10, repeat: Infinity, delay: 2 }}
+        className="absolute bottom-10 right-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl"
+      />
 
       <div className="section-container relative z-10" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
           className="max-w-4xl mx-auto text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/30 mb-8"
+          >
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-sm text-primary font-medium">
               Let's Build Something Amazing
             </span>
-          </div>
+          </motion.div>
 
-          <h2 className="section-title">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.3 }}
+            className="section-title"
+          >
             Ready to Transform Your
             <span className="text-gradient italic"> Digital Future?</span>
-          </h2>
+          </motion.h2>
 
-          <p className="section-subtitle mx-auto mt-6 mb-10">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4 }}
+            className="section-subtitle mx-auto mt-6 mb-12"
+          >
             Partner with Vision Dynamic and unlock the full potential of your
             business. Let's create innovative solutions that drive growth and
             success together.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5 }}
+            className="flex flex-wrap justify-center gap-5"
+          >
             <Button
               variant="hero"
               size="xl"
-              className="group"
+              className="group rounded-full"
               onClick={() =>
                 document
                   .querySelector("#contact")
@@ -59,6 +92,7 @@ const CTA = () => {
             <Button
               variant="heroOutline"
               size="xl"
+              className="rounded-full"
               onClick={() =>
                 document
                   .querySelector("#services")
@@ -67,7 +101,7 @@ const CTA = () => {
             >
               View Our Services
             </Button>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

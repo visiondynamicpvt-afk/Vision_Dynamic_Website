@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,20 +49,25 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-card/30">
-      <div className="section-container" ref={ref}>
+    <section id="contact" className="py-28 bg-card/20 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 left-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+      </div>
+
+      <div className="section-container relative z-10" ref={ref}>
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-primary font-medium mb-4 tracking-wider uppercase"
+            className="text-primary font-semibold mb-4 tracking-widest uppercase text-sm"
           >
             Contact Us
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="section-title"
@@ -75,14 +79,14 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="section-subtitle mx-auto mt-4"
+            className="section-subtitle mx-auto mt-6"
           >
             Have a project in mind? We'd love to hear from you. Send us a
             message and we'll respond as soon as possible.
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -90,50 +94,76 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
+              <div className="grid sm:grid-cols-2 gap-5">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.3 }}
+                >
                   <Input
                     placeholder="Your Name"
                     required
-                    className="bg-card border-border focus:border-primary h-12"
+                    className="bg-card/80 border-border/50 focus:border-primary h-14 rounded-xl backdrop-blur-sm"
                   />
-                </div>
-                <div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.35 }}
+                >
                   <Input
                     type="email"
                     placeholder="Your Email"
                     required
-                    className="bg-card border-border focus:border-primary h-12"
+                    className="bg-card/80 border-border/50 focus:border-primary h-14 rounded-xl backdrop-blur-sm"
                   />
-                </div>
+                </motion.div>
               </div>
-              <Input
-                placeholder="Subject"
-                required
-                className="bg-card border-border focus:border-primary h-12"
-              />
-              <Textarea
-                placeholder="Your Message"
-                required
-                rows={6}
-                className="bg-card border-border focus:border-primary resize-none"
-              />
-              <Button
-                type="submit"
-                variant="hero"
-                size="lg"
-                className="w-full sm:w-auto"
-                disabled={isSubmitting}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.4 }}
               >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </Button>
+                <Input
+                  placeholder="Subject"
+                  required
+                  className="bg-card/80 border-border/50 focus:border-primary h-14 rounded-xl backdrop-blur-sm"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.45 }}
+              >
+                <Textarea
+                  placeholder="Your Message"
+                  required
+                  rows={6}
+                  className="bg-card/80 border-border/50 focus:border-primary resize-none rounded-xl backdrop-blur-sm"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.5 }}
+              >
+                <Button
+                  type="submit"
+                  variant="hero"
+                  size="lg"
+                  className="w-full sm:w-auto rounded-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="ml-2 h-4 w-4" />
+                    </>
+                  )}
+                </Button>
+              </motion.div>
             </form>
           </motion.div>
 
@@ -145,27 +175,39 @@ const Contact = () => {
             className="space-y-6"
           >
             {contactInfo.map((info, index) => (
-              <a
+              <motion.a
                 key={index}
                 href={info.href}
-                className="flex items-start gap-4 p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3 + index * 0.1 }}
+                whileHover={{ scale: 1.02, x: 5 }}
+                className="flex items-start gap-5 p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/40 transition-all group backdrop-blur-sm"
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors">
-                  <info.icon className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors" />
-                </div>
+                <motion.div
+                  whileHover={{ rotate: 10 }}
+                  className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors"
+                >
+                  <info.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors" />
+                </motion.div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">
+                  <h3 className="font-semibold text-foreground mb-1 text-lg">
                     {info.title}
                   </h3>
                   <p className="text-muted-foreground">{info.value}</p>
                 </div>
-              </a>
+              </motion.a>
             ))}
 
             {/* Map placeholder */}
-            <div className="rounded-xl overflow-hidden border border-border h-48 bg-card flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6 }}
+              className="rounded-2xl overflow-hidden border border-border/50 h-52 bg-card/50 flex items-center justify-center backdrop-blur-sm"
+            >
               <p className="text-muted-foreground">Interactive Map</p>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
