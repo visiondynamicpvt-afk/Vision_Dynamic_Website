@@ -8,6 +8,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import rajnishImage from "@/assets/images/rajnish.jpeg";
+import pratikImage from "@/assets/images/team-2.JPG.jpeg";
+import srijanImage from "@/assets/images/team-6.jpeg";
+import utsavImage from "@/assets/images/image.png";
+import animeshImage from "@/assets/images/team-4.jpeg";
+import sajanImage from "@/assets/images/IMG_1756.PNG";
 
 interface TeamMember {
   id: number;
@@ -31,7 +37,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/rajnishchaudhary?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/_rajnishchaudhary_?igsh=dHBtb3Z1NWh6Ymox",
     facebook: "https://www.facebook.com/share/1GQm25xiqn/",
-    image: "src/assets/images/rajnish.jpeg",
+    image: rajnishImage,
   },
   {
     id: 2,
@@ -42,7 +48,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "http://linkedin.com/in/pratik-chaudhary-web",
     instagram: "https://www.instagram.com/ig_pratik0p?igsh=MWVrZGI4Mm8wMHl6NA%3D%3D&utm_source=qr",
     facebook: "https://www.facebook.com/share/1GQhzwfbq7/?mibextid=wwXIfr",
-    image: "src/assets/images/team-2.JPG.jpeg",
+    image: pratikImage,
   },
   {
     id: 3,
@@ -53,7 +59,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/srijan-rijal-264a64259/",
     instagram: "https://www.instagram.com/the.srjn/",
     facebook: "https://www.facebook.com/srijan.rijal.825991",
-    image: "src/assets/images/team-6.jpeg",
+    image: srijanImage,
   },
   {
     id: 4,
@@ -64,7 +70,7 @@ const teamMembers: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/utsav-stha-b378b5259/', 
     instagram: 'https://www.instagram.com/uts4v_shrestha?igsh=NXRuNG91dTA1b2Y5', 
     facebook: 'https://www.facebook.com/utsav.shrestha.7' ,
-    image: "src/assets/images/image.png",
+    image: utsavImage,
   },
 
   {
@@ -76,7 +82,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/animesh-pyakurel-6178b1259?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/ani.mesh_19?utm_source=qr&igsh=N3hxbmZhYTc3NjVp",
     facebook: "https://www.facebook.com/share/1BgK86N3V4/",
-    image: "src/assets/images/team-4.jpeg",
+    image: animeshImage,
   },
   {
     id: 6,
@@ -87,7 +93,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/sajan-amatya-web?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     instagram: "https://www.instagram.com/sazen_29?igsh=enZuOGMzN2VrYzRy&utm_source=qr",
     facebook: "https://www.facebook.com/share/186gPEYExq/?mibextid=wwXIfr",
-    image: "src/assets/images/IMG_1756.PNG",
+    image: sajanImage,
   },
 ];
 
