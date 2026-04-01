@@ -51,6 +51,17 @@ const teamMembers: TeamMember[] = [
     image: pratikImage,
   },
   {
+    id: 6,
+    name: "Sajan Amatya",
+    position: "Project Manager/Frontend Lead",
+    department: "Management",
+    email: "sajan@visiondynamic.com",
+    linkedin: "https://www.linkedin.com/in/sajan-amatya-web?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+    instagram: "https://www.instagram.com/sazen_29?igsh=enZuOGMzN2VrYzRy&utm_source=qr",
+    facebook: "https://www.facebook.com/share/186gPEYExq/?mibextid=wwXIfr",
+    image: sajanImage,
+  },
+  {
     id: 3,
     name: "Srijan Rijal",
     position: "Frontend Developer/QA Engineer",
@@ -72,7 +83,6 @@ const teamMembers: TeamMember[] = [
     facebook: 'https://www.facebook.com/utsav.shrestha.7' ,
     image: utsavImage,
   },
-
   {
     id: 5,
     name: "Animesh Pyakurel",
@@ -83,17 +93,6 @@ const teamMembers: TeamMember[] = [
     instagram: "https://www.instagram.com/ani.mesh_19?utm_source=qr&igsh=N3hxbmZhYTc3NjVp",
     facebook: "https://www.facebook.com/share/1BgK86N3V4/",
     image: animeshImage,
-  },
-  {
-    id: 6,
-    name: "Sajan Amatya",
-    position: "Project Manager/Frontend Lead",
-    department: "Management",
-    email: "sajan@visiondynamic.com",
-    linkedin: "https://www.linkedin.com/in/sajan-amatya-web?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    instagram: "https://www.instagram.com/sazen_29?igsh=enZuOGMzN2VrYzRy&utm_source=qr",
-    facebook: "https://www.facebook.com/share/186gPEYExq/?mibextid=wwXIfr",
-    image: sajanImage,
   },
 ];
 
