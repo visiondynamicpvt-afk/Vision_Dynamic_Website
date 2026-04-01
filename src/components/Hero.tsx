@@ -18,7 +18,7 @@ const Hero = () => {
     <section
       id="home"
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a17] text-white"
+      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#0a0a17] text-white"
     >
       {/* Portrait image – smaller on desktop + gradient blend */}
       <motion.div style={{ scale }} className="absolute inset-0 pointer-events-none">
@@ -72,7 +72,7 @@ const Hero = () => {
       {/* Main content container */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-20 w-full max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24 py-20"
+        className="relative z-20 w-full max-w-7xl px-5 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-24 md:py-20"
       >
         <div className="max-w-2xl">
           <motion.p
@@ -87,7 +87,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-8 md:mb-12"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.92] mb-8 md:mb-12 tracking-tight"
           >
             Elevate
             <br />

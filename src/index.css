@@ -182,12 +182,13 @@
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-6;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6;
     font-family: var(--font-display);
+    line-height: 1.1;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-muted-foreground max-w-2xl;
+    @apply text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl;
   }
 
   /* Scroll reveal animations */
@@ -240,9 +241,26 @@
     animation: float 6s ease-in-out infinite;
   }
 
-  /* Parallax effect */
+  /* Parallax effect - will-change removed, promoting idle elements wastes GPU layers */
   .parallax-slow {
+    transform: translateZ(0);
+  }
+
+  /* CSS-only spinning circles — replaces Framer Motion repeat:Infinity rotate */
+  .spin-slow {
+    animation: spinSlow 20s linear infinite;
     will-change: transform;
+  }
+
+  .spin-slow-reverse {
+    animation: spinSlow 15s linear infinite reverse;
+    will-change: transform;
+  }
+
+  /* CSS-only glow pulse — opacity only so it stays on compositor thread */
+  .pulse-glow {
+    animation: pulseGlowOpacity 3s ease-in-out infinite;
+    will-change: opacity;
   }
 }
 
@@ -363,6 +381,7 @@
   );
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
+  will-change: background-position;
 }
 
 /* Glow pulse animation */
@@ -377,6 +396,7 @@
 
 .glow-pulse {
   animation: glowPulse 2s ease-in-out infinite;
+  will-change: opacity;
 }
 
 /* Gradient border animation */
@@ -391,4 +411,25 @@
 
 .animated-border {
   animation: gradientBorder 3s ease-in-out infinite;
+  will-change: border-color;
+}
+
+/* Spin keyframe for CSS-only rotating circles */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Opacity-only pulse for GPU-safe glow effect */
+@keyframes pulseGlowOpacity {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

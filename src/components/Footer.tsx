@@ -49,8 +49,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-card/50 border-t border-border/50 backdrop-blur-sm">
-      <div className="section-container py-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
+      <div className="section-container py-12 md:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <motion.div

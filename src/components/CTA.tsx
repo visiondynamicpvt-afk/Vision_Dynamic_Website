@@ -8,26 +8,18 @@ const CTA = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-28 relative overflow-hidden">
+    <section className="py-16 md:py-28 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-sky-500/5" />
       
-      {/* Animated decorative elements */}
-      <motion.div
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className="absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+      {/* Animated decorative blobs — CSS-driven opacity pulse (GPU compositor, no JS loop) */}
+      <div
+        className="pulse-glow absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+        style={{ animationDelay: "0s" }}
       />
-      <motion.div
-        animate={{ 
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2]
-        }}
-        transition={{ duration: 10, repeat: Infinity, delay: 2 }}
-        className="absolute bottom-10 right-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl"
+      <div
+        className="pulse-glow absolute bottom-10 right-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl"
+        style={{ animationDelay: "2s", animationDuration: "5s" }}
       />
 
       <div className="section-container relative z-10" ref={ref}>
@@ -63,7 +55,7 @@ const CTA = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4 }}
-            className="section-subtitle mx-auto mt-6 mb-12"
+            className="section-subtitle mx-auto mt-6 mb-10 md:mb-12"
           >
             Partner with Vision Dynamic and unlock the full potential of your
             business. Let's create innovative solutions that drive growth and
@@ -74,12 +66,12 @@ const CTA = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.5 }}
-            className="flex flex-wrap justify-center gap-5"
+            className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5"
           >
             <Button
               variant="hero"
               size="xl"
-              className="group rounded-full"
+              className="group rounded-full w-full sm:w-auto"
               onClick={() =>
                 document
                   .querySelector("#contact")
@@ -92,7 +84,7 @@ const CTA = () => {
             <Button
               variant="heroOutline"
               size="xl"
-              className="rounded-full"
+              className="rounded-full w-full sm:w-auto"
               onClick={() =>
                 document
                   .querySelector("#services")

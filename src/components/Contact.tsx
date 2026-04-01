@@ -85,7 +85,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-28 bg-card/20 relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-28 bg-card/20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
@@ -122,7 +122,7 @@ const Contact = () => {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

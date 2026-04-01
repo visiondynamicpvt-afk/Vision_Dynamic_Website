@@ -89,7 +89,7 @@ const Services = () => {
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section id="services" className="py-28 bg-card/20 relative overflow-hidden">
+    <section id="services" className="py-16 md:py-28 bg-card/20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -138,7 +138,7 @@ const Services = () => {
                 animate={inView ? "visible" : "hidden"}
                 variants={cardVariants}
                 whileHover={{ y: -12, scale: 1.02 }}
-                className="service-card relative overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 border-primary/40 backdrop-blur-sm p-8 rounded-2xl border border-border group cursor-pointer"
+                className="service-card relative overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 border-primary/40 backdrop-blur-sm p-5 md:p-8 rounded-2xl border border-border group cursor-pointer"
               >
                 {/* Background image for all services */}
                 <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none">
@@ -146,6 +146,8 @@ const Services = () => {
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 {/* Radial gradient overlay for modern effect */}

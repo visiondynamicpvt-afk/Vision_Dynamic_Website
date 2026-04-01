@@ -12,11 +12,17 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let rafId: number;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      rafId = requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 50);
+      });
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const scrollToSection = (href: string) => {

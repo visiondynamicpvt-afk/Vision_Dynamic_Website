@@ -35,11 +35,8 @@ const TeamCard = ({ member, index }: TeamCardProps) => {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/[0.08] via-transparent to-transparent" />
         {/* Image Container */}
         <div className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-card to-primary/10 aspect-square flex items-center justify-center">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 border border-primary/10 rounded-full"
-          />
+          {/* CSS-only spinner ring — same look, zero JS animation cost */}
+          <div className="spin-slow absolute inset-0 border border-primary/10 rounded-full" />
           
           {member.image ? (
             <img

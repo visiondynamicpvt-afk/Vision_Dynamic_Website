@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Zap, Users, Clock, Trophy, Target, Heart } from "lucide-react";
 
@@ -38,25 +38,16 @@ const reasons = [
 const WhyChooseUs = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section id="projects" className="py-28 bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <motion.div
-        style={{ y }}
-        className="absolute inset-0 pointer-events-none"
-      >
+    <section id="projects" className="py-16 md:py-28 bg-background relative overflow-hidden">
+      {/* Static background decoration — removed useScroll parallax (repaint storm) */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" />
-      </motion.div>
+      </div>
 
       <div className="section-container relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}

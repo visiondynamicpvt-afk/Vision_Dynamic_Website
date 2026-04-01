@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight } from "lucide-react";
@@ -16,27 +16,21 @@ const features = [
 const About = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const leftX = useTransform(scrollYProgress, [0, 0.5], [-100, 0]);
-  const rightX = useTransform(scrollYProgress, [0, 0.5], [100, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section id="about" className="py-28 bg-background relative overflow-hidden">
+    <section id="about" className="py-16 md:py-28 bg-background relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
       </div>
 
       <div className="section-container relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
           {/* Image Side */}
           <motion.div
-            style={{ x: leftX, opacity }}
+            initial={{ opacity: 0, x: -60 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
             className="relative"
           >
             <motion.div
@@ -57,31 +51,12 @@ const About = () => {
                   />
                 </div>
                 
-                {/* Animated glow effect behind logo */}
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    opacity: [0.2, 0.4, 0.2]
-                  }}
-                  transition={{ 
-                    duration: 3, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
-                  }}
-                  className="absolute inset-0 bg-gradient-to-r from-primary/30 via-sky-400/30 to-primary/30 blur-3xl"
-                />
+                {/* Animated glow effect behind logo — CSS-driven, GPU compositor */}
+                <div className="pulse-glow absolute inset-0 bg-gradient-to-r from-primary/30 via-sky-400/30 to-primary/30 blur-3xl" />
                 
-                {/* Animated circles */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-10 border border-primary/20 rounded-full"
-                />
-                <motion.div
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-20 border border-primary/30 rounded-full"
-                />
+                {/* Decorative spinning circles — CSS animation, zero JS cost */}
+                <div className="spin-slow absolute inset-10 border border-primary/20 rounded-full" />
+                <div className="spin-slow-reverse absolute inset-20 border border-primary/30 rounded-full" />
                 
                 {/* Text overlay at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 text-center p-8 bg-gradient-to-t from-background/90 via-background/50 to-transparent z-10">
@@ -107,7 +82,11 @@ const About = () => {
           </motion.div>
 
           {/* Content Side */}
-          <motion.div style={{ x: rightX, opacity }}>
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+          >
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}

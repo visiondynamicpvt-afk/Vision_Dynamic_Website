@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Users, FolderKanban, Star, Award } from "lucide-react";
 
@@ -76,23 +76,14 @@ const Counter = ({
 const Stats = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   return (
-    <section className="py-24 bg-card/30 relative overflow-hidden">
-      {/* Background decoration */}
-      <motion.div
-        style={{ y }}
-        className="absolute inset-0 pointer-events-none"
-      >
+    <section className="py-16 md:py-24 bg-card/30 relative overflow-hidden">
+      {/* Static background blobs — removed useScroll parallax (was forcing repaint every scroll tick) */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      </motion.div>
+      </div>
 
       <div className="section-container relative z-10" ref={ref}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
