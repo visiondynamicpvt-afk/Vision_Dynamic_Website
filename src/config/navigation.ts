@@ -28,16 +28,16 @@ export const FOOTER_COMPANY_LINKS: NavLink[] = [
 ];
 
 export const FOOTER_SERVICES_LINKS: NavLink[] = [
-  { name: "Web Development", href: "#services", isRoute: false },
-  { name: "Mobile Apps", href: "#services", isRoute: false },
-  { name: "Cloud Solutions", href: "#services", isRoute: false },
-  { name: "IT Consulting", href: "#services", isRoute: false },
+  { name: "Web Development", href: "#service-web-development", isRoute: false },
+  { name: "Mobile Apps", href: "#service-mobile-apps", isRoute: false },
+  { name: "Cloud Solutions", href: "#service-cloud-solutions", isRoute: false },
+  { name: "Digital Marketing and IT Consulting", href: "#service-digital-marketing-and-it-consulting", isRoute: false },
 ];
 
 export const FOOTER_LEGAL_LINKS: NavLink[] = [
-  { name: "Privacy Policy", href: "#" },
-  { name: "Terms of Service", href: "#" },
-  { name: "Cookie Policy", href: "#" },
+  { name: "Privacy Policy", href: "/privacy-policy", isRoute: true },
+  { name: "Terms of Service", href: "/terms-of-service", isRoute: true },
+  { name: "Cookie Policy", href: "/cookie-policy", isRoute: true },
 ];
 
 export interface SocialLink {

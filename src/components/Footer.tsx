@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Facebook,
   Linkedin,
@@ -39,12 +39,22 @@ const socialLinks: SocialLink[] = [
 ];
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const scrollToSection = (href: string) => {
-    scrollToSectionByHref(href);
+    if (location.pathname !== "/") {
+      navigate("/" + href);
+      setTimeout(() => {
+        scrollToSectionByHref(href);
+      }, 300); // Give the homepage a moment to render
+    } else {
+      scrollToSectionByHref(href);
+    }
   };
 
   return (
@@ -149,13 +159,24 @@ const Footer = () => {
             <ul className="space-y-4">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <motion.a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    whileHover={{ x: 3 }}
-                  >
-                    {link.name}
-                  </motion.a>
+                  {link.isRoute ? (
+                    <Link
+                      to={link.href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <motion.span whileHover={{ x: 3 }}>
+                        {link.name}
+                      </motion.span>
+                    </Link>
+                  ) : (
+                    <motion.a
+                      href={link.href}
+                      className="text-muted-foreground hover:text-primary transition-colors inline-block"
+                      whileHover={{ x: 3 }}
+                    >
+                      {link.name}
+                    </motion.a>
+                  )}
                 </li>
               ))}
             </ul>

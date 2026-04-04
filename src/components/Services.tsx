@@ -50,7 +50,7 @@ const services = [
   },
   {
     icon: Lightbulb,
-    title: "IT Consulting",
+    title: "Digital Marketing and IT Consulting",
     description:
       "Strategic technology consulting to drive digital transformation and growth.",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
@@ -130,15 +130,17 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => {
+            const serviceId = `service-${service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
             return (
               <motion.div
                 key={index}
+                id={serviceId}
                 custom={index}
                 initial="hidden"
                 animate={inView ? "visible" : "hidden"}
                 variants={cardVariants}
                 whileHover={{ y: -12, scale: 1.02 }}
-                className="service-card relative overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 border-primary/40 backdrop-blur-sm p-5 md:p-8 rounded-2xl border border-border group cursor-pointer"
+                className="service-card relative overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 border-primary/40 backdrop-blur-sm p-5 md:p-8 rounded-2xl border border-border group cursor-pointer transition-all duration-500"
               >
                 {/* Background image for all services */}
                 <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none">

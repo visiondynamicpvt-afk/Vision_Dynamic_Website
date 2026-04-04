@@ -104,7 +104,7 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.55 }}
             className="text-base md:text-lg lg:text-xl text-gray-300/90 max-w-xl mb-10 md:mb-14 leading-relaxed"
           >
-            We transform ideas into powerful digital solutions. From web development to IT consulting, we deliver excellence that drives your business forward.
+            We transform ideas into powerful digital solutions. From web development to digital marketing and IT consulting, we deliver excellence that drives your business forward.
           </motion.p>
 
           {/* Stats removed */}

@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import TeamCard from "@/components/TeamCard";
 import {
   Carousel,
@@ -134,6 +135,11 @@ const TeamSection = () => {
             align: "start",
             loop: true,
           }}
+          plugins={[
+            Autoplay({
+              delay: 5000,
+            }),
+          ]}
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-4">
