@@ -124,7 +124,7 @@ const Footer = () => {
                   ) : (
                     <motion.button
                       onClick={() => scrollToSection(link.href)}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-primary transition-colors text-left"
                       whileHover={{ x: 3 }}
                     >
                       {link.name}
@@ -143,7 +143,7 @@ const Footer = () => {
                 <li key={index}>
                   <motion.button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors text-left"
                     whileHover={{ x: 3 }}
                   >
                     {link.name}
