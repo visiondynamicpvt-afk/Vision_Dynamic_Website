@@ -21,7 +21,7 @@ const projects: Project[] = [
       "A modern web development project with full backend integration using React JS and Firebase for real-time data management.",
     technologies: ["React JS", "Firebase", "Tailwind CSS", "JavaScript"],
     image: projectImage,
-    liveLink: "https://hotelgrilldurbar.com",
+    liveLink: "https://www.hotelgrilldurbar.com.np/",
   },
 ];
 
