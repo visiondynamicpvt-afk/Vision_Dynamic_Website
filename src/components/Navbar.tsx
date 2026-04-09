@@ -123,7 +123,7 @@ const Navbar = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="md:hidden absolute right-4 top-20 w-48 p-3 rounded-2xl bg-background/95 backdrop-blur-xl border border-border shadow-2xl flex flex-col z-50"
+              className="md:hidden absolute right-4 top-20 w-40 px-2 py-3 rounded-2xl bg-background/95 backdrop-blur-xl border border-border shadow-2xl flex flex-col z-50"
             >
               <div className="flex flex-col gap-0 items-center">
                 {MAIN_NAV_LINKS.map((link, index) => (
