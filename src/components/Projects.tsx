@@ -102,23 +102,26 @@ const Projects = () => {
                   </div>
 
                   {/* Links */}
-                  <div className="flex gap-3 pt-4 border-t border-border">
+                  <div className="flex gap-3 pt-4 border-t border-border mt-auto">
+                    {/* 
+                      Ensuring buttons are clearly visible and full width on smaller screens, 
+                      providing clear touch targets and improved accessibility. 
+                    */}
                     {project.liveLink && (
                       <motion.a
                         href={project.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full"
                       >
                         <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-full rounded-lg"
+                          variant="default"
+                          className="w-full rounded-lg py-6 md:py-4 text-sm md:text-base font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
                         >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Live Demo
+                          <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <span>View Live Demo</span>
                         </Button>
                       </motion.a>
                     )}

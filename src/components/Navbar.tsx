@@ -36,11 +36,11 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass" : "bg-transparent"
+        isScrolled || isMobileMenuOpen ? "glass bg-background/95 backdrop-blur-md border-b border-border/40 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="section-container h-20 md:h-24 flex items-center">
-        <div className="w-full flex items-center justify-between">
+      <div className="section-container">
+        <div className="w-full h-20 md:h-24 flex items-center justify-between">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -123,7 +123,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 pb-4"
+              className="md:hidden flex flex-col gap-4 pb-4 overflow-hidden"
             >
               <div className="flex flex-col gap-4">
                 {MAIN_NAV_LINKS.map((link, index) => (
@@ -137,14 +137,14 @@ const Navbar = () => {
                       <Link
                         to={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="text-muted-foreground hover:text-foreground transition-colors text-left py-2 block"
+                        className="text-muted-foreground hover:text-foreground transition-colors text-left py-2 block w-full"
                       >
                         {link.name}
                       </Link>
                     ) : (
                       <button
                         onClick={() => scrollToSection(link.href)}
-                        className="text-muted-foreground hover:text-foreground transition-colors text-left py-2"
+                        className="text-muted-foreground hover:text-foreground transition-colors text-left py-2 block w-full"
                       >
                         {link.name}
                       </button>
@@ -152,8 +152,9 @@ const Navbar = () => {
                   </motion.div>
                 ))}
                 <Button
-                  variant="hero"
-                  className="mt-2 rounded-full"
+                  variant="default"
+                  size="lg"
+                  className="mt-2 w-full rounded-full"
                   onClick={() => scrollToSection("#contact")}
                 >
                   Get Started
