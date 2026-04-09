@@ -39,7 +39,7 @@ const Navbar = () => {
         isScrolled || isMobileMenuOpen ? "glass bg-background/95 backdrop-blur-md border-b border-border/40 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="section-container">
+      <div className="section-container relative">
         <div className="w-full h-20 md:h-24 flex items-center justify-between">
           {/* Logo */}
           <motion.div
@@ -119,42 +119,44 @@ const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden flex flex-col gap-4 pb-4 overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95, y: -10, transformOrigin: "top right" }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="md:hidden absolute right-4 top-20 w-48 p-3 rounded-2xl bg-background/95 backdrop-blur-xl border border-border shadow-2xl flex flex-col z-50"
             >
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-0 items-center">
                 {MAIN_NAV_LINKS.map((link, index) => (
                   <motion.div
                     key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 * index }}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.03 * index }}
+                    className="w-full"
                   >
                     {link.isRoute ? (
                       <Link
                         to={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="text-muted-foreground hover:text-foreground transition-colors text-left py-2 block w-full"
+                        className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium text-center py-2 block w-full"
                       >
                         {link.name}
                       </Link>
                     ) : (
                       <button
                         onClick={() => scrollToSection(link.href)}
-                        className="text-muted-foreground hover:text-foreground transition-colors text-left py-2 block w-full"
+                        className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium text-center py-2 block w-full"
                       >
                         {link.name}
                       </button>
                     )}
                   </motion.div>
                 ))}
+                <div className="h-px w-[80%] bg-border/50 my-2" />
                 <Button
-                  variant="default"
-                  size="lg"
-                  className="mt-2 w-full rounded-full"
+                  variant="hero"
+                  size="sm"
+                  className="w-[90%] rounded-xl"
                   onClick={() => scrollToSection("#contact")}
                 >
                   Get Started
