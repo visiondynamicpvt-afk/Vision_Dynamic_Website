@@ -138,22 +138,22 @@ const TeamSection = () => {
         >
           <div className="flex flex-col md:flex-row">
             {/* CEO Image */}
-            <div className="w-full md:w-2/5 md:min-h-[500px] relative overflow-hidden group">
+            <div className="w-full h-[400px] md:h-auto md:w-2/5 md:min-h-[500px] relative overflow-hidden group">
               <img 
                 src={rajnishImage} 
                 alt="Rajnish Chaudhary - CEO" 
                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent flex items-end p-8">
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent flex items-end p-6 md:p-8">
                 <div>
-                  <h3 className="text-3xl font-display font-bold text-foreground">Rajnish Chaudhary</h3>
-                  <p className="text-primary font-medium text-lg mt-1">CEO & Founder</p>
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground">Rajnish Chaudhary</h3>
+                  <p className="text-primary font-medium md:text-lg mt-1">CEO & Founder</p>
                 </div>
               </div>
             </div>
             
             {/* CEO Message & Details */}
-            <div className="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center space-y-6 text-left">
+            <div className="w-full md:w-3/5 p-6 sm:p-8 md:p-12 flex flex-col justify-center space-y-6 text-left">
               <div className="relative">
                 <span className="text-6xl text-primary/20 absolute -top-4 -left-4 font-serif">"</span>
                 <p className="text-xl md:text-2xl font-medium leading-relaxed text-foreground relative z-10 italic">
