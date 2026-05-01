@@ -118,40 +118,94 @@ const TeamSection = () => {
           className="mb-16 text-center"
         >
           <p className="text-primary font-semibold mb-4 tracking-widest uppercase text-sm">
-            Meet The Team
+            Leadership
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-display">
-            Our Talented <span className="text-gradient">Team Members</span>
+            Meet our <span className="text-gradient">Founder</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Meet the brilliant minds behind Vision Dynamic. Our team is committed
-            to excellence, innovation, and your success.
+            Meet the visionary behind Vision Dynamic. Passionate about driving innovation, 
+            excellence, and scaling digital ecosystems for your success.
           </p>
         </motion.div>
 
-        {/* Team Carousel */}
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 5000,
-            }),
-          ]}
-          className="w-full max-w-6xl mx-auto"
+        {/* CEO Highlight Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-5xl mx-auto bg-card border border-border rounded-3xl overflow-hidden shadow-lg mt-8"
         >
-          <CarouselContent className="-ml-4">
-            {teamMembers.map((member, index) => (
-              <CarouselItem key={member.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <TeamCard member={member} index={index} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex -left-4 md:-left-12 h-10 w-10 md:h-12 md:w-12" />
-          <CarouselNext className="hidden sm:flex -right-4 md:-right-12 h-10 w-10 md:h-12 md:w-12" />
-        </Carousel>
+          <div className="flex flex-col md:flex-row">
+            {/* CEO Image */}
+            <div className="w-full md:w-2/5 md:min-h-[500px] relative overflow-hidden group">
+              <img 
+                src={rajnishImage} 
+                alt="Rajnish Chaudhary - CEO" 
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent flex items-end p-8">
+                <div>
+                  <h3 className="text-3xl font-display font-bold text-foreground">Rajnish Chaudhary</h3>
+                  <p className="text-primary font-medium text-lg mt-1">CEO & Founder</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* CEO Message & Details */}
+            <div className="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center space-y-6 text-left">
+              <div className="relative">
+                <span className="text-6xl text-primary/20 absolute -top-4 -left-4 font-serif">"</span>
+                <p className="text-xl md:text-2xl font-medium leading-relaxed text-foreground relative z-10 italic">
+                  At Vision Dynamic, our goal is to bridge the gap between imagination and reality. We build digital ecosystems that scale with your ambitions.
+                </p>
+              </div>
+              
+              <div className="space-y-4 text-muted-foreground leading-relaxed pt-4 border-t border-border">
+                <p>
+                  As the founding visionary of the company, Rajnish brings strategic foresight and an unwavering commitment to innovative technology. His career has been defined by a passion for solving complex business challenges across full-stack paradigms.
+                </p>
+                <p>
+                  Under his leadership, Vision Dynamic is navigating the future of tech, fostering an environment where a highly-skilled team can deliver groundbreaking platforms, robust web presence, and exceptional user experiences.
+                </p>
+              </div>
+
+              <div className="flex gap-4 pt-4">
+                <a href={teamMembers[0].linkedin} target="_blank" rel="noopener noreferrer" className="p-2 bg-secondary rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
+                  <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Team Carousel (Hidden for now but preserved for future use) */}
+        {false && (
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 5000,
+              }),
+            ]}
+            className="w-full max-w-6xl mx-auto"
+          >
+            <CarouselContent className="-ml-4">
+              {teamMembers.map((member, index) => (
+                <CarouselItem key={member.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <TeamCard member={member} index={index} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex -left-4 md:-left-12 h-10 w-10 md:h-12 md:w-12" />
+            <CarouselNext className="hidden sm:flex -right-4 md:-right-12 h-10 w-10 md:h-12 md:w-12" />
+          </Carousel>
+        )}
 
         {/* Stats Section */}
         <motion.div
