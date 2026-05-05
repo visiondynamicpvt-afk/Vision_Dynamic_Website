@@ -92,13 +92,13 @@ const CareersSection = () => {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-2">Application Submitted Successfully!</h3>
               <p className="text-muted-foreground">
-                Thank you for your interest in Visionary Dynamics. We have received your details and CV, and we will get back to you shortly.
+                Thank you for your interest in Vision Dynamic. We have received your details and CV, and we will get back to you shortly.
               </p>
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* FormSubmit Configuration */}
-              <input type="hidden" name="_subject" value="New Career Application - Visionary Dynamics" />
+              <input type="hidden" name="_subject" value="New Career Application - Vision Dynamic" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
 
