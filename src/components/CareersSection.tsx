@@ -113,7 +113,7 @@ const CareersSection = () => {
                     name="name"
                     required
                     className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                    placeholder="John Doe"
+                    placeholder="Your full name"
                   />
                 </div>
 
@@ -127,7 +127,7 @@ const CareersSection = () => {
                     name="email"
                     required
                     className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                    placeholder="john@example.com"
+                    placeholder="your.email@example.com"
                   />
                 </div>
               </div>
@@ -142,7 +142,7 @@ const CareersSection = () => {
                   name="phone"
                   required
                   className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="Your contact number"
                 />
               </div>
 

@@ -185,7 +185,7 @@ const Team = () => {
               className="p-6 rounded-2xl bg-card border border-border text-center"
             >
               <p className="text-4xl font-bold text-gradient mb-2">
-                5+
+                3+
               </p>
               <p className="text-muted-foreground">Departments</p>
             </motion.div>
