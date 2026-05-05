@@ -16,7 +16,7 @@ export const MAIN_NAV_LINKS: NavLink[] = [
   { name: "About", href: "#about", isRoute: false },
   { name: "Services", href: "#services", isRoute: false },
   { name: "Projects", href: "#projects", isRoute: false },
-  { name: "Team", href: "#team", isRoute: false },
+  { name: "Careers", href: "#careers", isRoute: false },
   { name: "Contact", href: "#contact", isRoute: false },
 ];
 

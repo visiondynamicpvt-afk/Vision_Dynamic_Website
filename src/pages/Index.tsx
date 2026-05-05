@@ -9,6 +9,7 @@ const WhyChooseUs = lazy(() => import("@/components/WhyChooseUs"));
 const Projects = lazy(() => import("@/components/Projects"));
 const CTA = lazy(() => import("@/components/CTA"));
 const TeamSection = lazy(() => import("@/components/TeamSection"));
+const CareersSection = lazy(() => import("@/components/CareersSection"));
 const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
 
@@ -58,6 +59,9 @@ const Index = () => {
       </LazySection>
       <LazySection>
         <TeamSection />
+      </LazySection>
+      <LazySection>
+        <CareersSection />
       </LazySection>
       <LazySection minHeight="min-h-[420px]">
         <Contact />

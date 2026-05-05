@@ -46,7 +46,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <Link to="/">
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <motion.img
                 src={vdLogo}
                 alt="Company Logo"
@@ -69,6 +69,11 @@ const Navbar = () => {
                 {link.isRoute ? (
                   <Link
                     to={link.href}
+                    onClick={() => {
+                      if (link.href === "/") {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }}
                     className="text-muted-foreground hover:text-foreground transition-colors link-underline py-1 text-sm font-medium"
                   >
                     <motion.span whileHover={{ y: -2 }}>
@@ -137,7 +142,12 @@ const Navbar = () => {
                     {link.isRoute ? (
                       <Link
                         to={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          if (link.href === "/") {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
+                        }}
                         className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium text-center py-2 block w-full"
                       >
                         {link.name}
