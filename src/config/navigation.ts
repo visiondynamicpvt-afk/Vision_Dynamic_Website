@@ -24,7 +24,7 @@ export const FOOTER_COMPANY_LINKS: NavLink[] = [
   { name: "Home", href: "/", isRoute: true },
   { name: "About Us", href: "#about", isRoute: false },
   { name: "Services", href: "#services", isRoute: false },
-  { name: "Team", href: "#team", isRoute: false },
+  { name: "Careers", href: "#careers", isRoute: false },
 ];
 
 export const FOOTER_SERVICES_LINKS: NavLink[] = [
