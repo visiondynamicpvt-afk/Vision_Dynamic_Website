@@ -1,4 +1,5 @@
 import { lazy, Suspense, type ReactNode } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -40,6 +41,11 @@ const LazySection = ({
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Vision Dynamic | Top Digital Agency & Web Design Company in Nepal</title>
+        <meta name="description" content="Vision Dynamic is a premier web design, development, and digital marketing agency in Kathmandu, Nepal. We help national and international businesses grow with affordable, high-quality software solutions." />
+        <meta name="keywords" content="web design company Nepal, digital agency Kathmandu, software company, affordable web development South Asia, outsource web design Nepal" />
+      </Helmet>
       <Navbar />
       <Hero />
       <LazySection>
